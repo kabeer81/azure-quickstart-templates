@@ -99,13 +99,13 @@
         }
     },
     "variables": {
-        "loadBalancerFrontEndIPName": "ad-LBFE",
-        "backendAddressPoolName": "ad-LBBE",
-        "inboundNatRulesName": "ad-RDP",
-        "networkInterfaceName": "ad-nic",
-        "publicIPAddressName": "ad-ip",
-        "availabilitySetName": "ad-AvailabiltySet",
-        "loadBalancerName": "[concat(parameters('virtualMachineName'),'LoadBalancer')]"
+        "loadBalancerFrontEndIPName": "[concat(parameters('virtualMachineName'), '-LBFE')]",
+        "backendAddressPoolName": "[concat(parameters('virtualMachineName'), '-LBBE')]",
+        "inboundNatRulesName": "[concat(parameters('virtualMachineName'), '-RDP')]",
+        "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-nic')]",
+        "publicIPAddressName": "[concat(parameters('virtualMachineName'),'-ip')]",
+        "availabilitySetName": "[concat(parameters('virtualMachineName'), '-AvailabiltySet')]",
+        "loadBalancerName": "[concat(parameters('virtualMachineName'),'-LoadBalancer')]"
     },
     "resources": [
         {
