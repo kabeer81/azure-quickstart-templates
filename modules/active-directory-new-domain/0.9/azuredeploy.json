@@ -105,7 +105,7 @@
         "networkInterfaceName": "ad-nic",
         "publicIPAddressName": "ad-ip",
         "availabilitySetName": "ad-AvailabiltySet",
-        "loadBalancerName": "ad-LoadBalancer"
+        "loadBalancerName": "[concat(parameters('virtualMachineName'),'LoadBalancer')]"
     },
     "resources": [
         {
@@ -165,7 +165,7 @@
         {
             "type": "Microsoft.Network/loadBalancers",
             "apiVersion": "2022-01-01",
-            "name": "[concat(parameters('virtualMachineName'),'_loadBalancerName')]",
+            "name": "[variables('loadBalancerName')]",
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[variables('publicIPAddressName')]"
