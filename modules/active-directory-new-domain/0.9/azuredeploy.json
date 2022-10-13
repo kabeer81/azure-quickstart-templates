@@ -165,7 +165,7 @@
         {
             "type": "Microsoft.Network/loadBalancers",
             "apiVersion": "2022-01-01",
-            "name": "[concat(parameters('virtualMachineName'),variables('loadBalancerName')]",
+            "name": "[concat(parameters('virtualMachineName'),'_loadBalancerName')]",
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[variables('publicIPAddressName')]"
