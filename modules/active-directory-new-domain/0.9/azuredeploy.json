@@ -71,14 +71,14 @@
         },
         "virtualNetworkName": {
             "type": "string",
-            "defaultValue": "ad-vnet",
+            "defaultValue": "[concat(parameters('prefix'), '-vnet')]",
             "metadata": {
                 "description": "The name of the virtualNetwork."
             }
         },
         "subnetName": {
             "type": "string",
-            "defaultValue": "ad-vnet-subnet",
+            "defaultValue": "[concat(parameters('prefix'), '-vnet-subnet')]",
             "metadata": {
                 "description": "The name of the subnet."
             }
