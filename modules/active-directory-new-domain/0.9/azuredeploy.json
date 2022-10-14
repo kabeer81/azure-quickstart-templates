@@ -96,16 +96,22 @@
             "metadata": {
                 "description": "Subnet IP range."
             }
-        }
-    },
+        },
+        "prefix": {
+            "type": "string",
+            "defaultValue": "Mois",
+            "metadata": {
+                "description": "Resource name begins with this prefix."
+            }
+     },
     "variables": {
-        "loadBalancerFrontEndIPName": "[concat(parameters('virtualMachineName'), '-LBFE')]",
-        "backendAddressPoolName": "[concat(parameters('virtualMachineName'), '-LBBE')]",
-        "inboundNatRulesName": "[concat(parameters('virtualMachineName'), '-RDP')]",
-        "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-nic')]",
-        "publicIPAddressName": "[concat(parameters('virtualMachineName'),'-ip')]",
-        "availabilitySetName": "[concat(parameters('virtualMachineName'), '-AvailabiltySet')]",
-        "loadBalancerName": "[concat(parameters('virtualMachineName'),'-LoadBalancer')]"
+        "loadBalancerFrontEndIPName": "[concat(parameters('prefix'), '-LBFE')]",
+        "backendAddressPoolName": "[concat(parameters('prefix'), '-LBBE')]",
+        "inboundNatRulesName": "[concat(parameters('prefix'), '-RDP')]",
+        "networkInterfaceName": "[concat(parameters('prefix'), '-nic')]",
+        "publicIPAddressName": "[concat(parameters('prefix'),'-ip')]",
+        "availabilitySetName": "[concat(parameters('prefix'), '-AvailabiltySet')]",
+        "loadBalancerName": "[concat(parameters('prefix'),'-LoadBalancer')]"
     },
     "resources": [
         {
