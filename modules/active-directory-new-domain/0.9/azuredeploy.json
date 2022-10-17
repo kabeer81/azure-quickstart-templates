@@ -22,7 +22,7 @@
         },
         "dnsPrefix": {
             "type": "string",
-            "defaultValue": "[concat('ad-', uniqueString(resourceGroup().id))]",
+            "defaultValue": "[concat(parameters('prefix'), uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "The DNS prefix for the public IP address used by the Load Balancer"
             }
