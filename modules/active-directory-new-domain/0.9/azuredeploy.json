@@ -401,13 +401,14 @@
         "virtualNetworkAddressPrefixes": {
             "type": "string",
             "value": "[parameters('virtualNetworkAddressRange')]"
-        }
-    }
-        "scriptContent": "
+        },
+         "scriptContent": "
       param([string] $name)
       $output = 'Hello world' 
       Write-Output $output
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
-    ",
+    "
+    }
+       
 }
