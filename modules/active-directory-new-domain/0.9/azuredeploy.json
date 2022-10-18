@@ -103,7 +103,8 @@
             "metadata": {
                 "description": "Resource name begins with this prefix."
             }
-        },
+        }
+     },
     "variables": {
         "loadBalancerFrontEndIPName": "[concat(parameters('prefix'), '-LBFE')]",
         "backendAddressPoolName": "[concat(parameters('prefix'), '-LBBE')]",
