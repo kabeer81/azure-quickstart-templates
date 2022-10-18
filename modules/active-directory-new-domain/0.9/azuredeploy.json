@@ -401,6 +401,6 @@
         "virtualNetworkAddressPrefixes": {
             "type": "string",
             "value": "[parameters('virtualNetworkAddressRange')]"
-        }          
+        }
     }
 }
