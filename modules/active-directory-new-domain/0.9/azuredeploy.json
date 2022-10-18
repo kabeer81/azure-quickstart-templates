@@ -110,7 +110,7 @@
           Write-Output $output
           $DeploymentScriptOutputs = @{}
           $DeploymentScriptOutputs['text'] = $output
-        "
+        ",
      },
     "variables": {
         "loadBalancerFrontEndIPName": "[concat(parameters('prefix'), '-LBFE')]",
