@@ -405,7 +405,8 @@
         "scriptContent": "
             param([string] $name)
             $output = 'Hello world' 
-            Write-Output $output"
+            Write-Output $output
+        ",
             
     }
 
