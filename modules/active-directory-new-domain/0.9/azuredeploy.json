@@ -332,6 +332,13 @@
                             }
                         }
                     }
+                    "scriptContent": "
+          param([string] $name)
+          $output = \"Hello {0}\" -f $name
+          Write-Output $output
+          $DeploymentScriptOutputs = @{}
+          $DeploymentScriptOutputs['text'] = $output
+        ",
                 }
             ]
         },
@@ -401,12 +408,6 @@
         "virtualNetworkAddressPrefixes": {
             "type": "string",
             "value": "[parameters('virtualNetworkAddressRange')]"
-        },
-        "scriptContent": "
-            param([string] $name)
-            $output = 'Hello world' 
-            Write-Output $output
-        ",
-            
+        }          
     }
 }
