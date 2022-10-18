@@ -104,6 +104,13 @@
                 "description": "Resource name begins with this prefix."
             }
         }
+        "scriptContent": "
+          param([string] $name)
+          $output = \"Hello {0}\" -f $name
+          Write-Output $output
+          $DeploymentScriptOutputs = @{}
+          $DeploymentScriptOutputs['text'] = $output
+        ",
      },
     "variables": {
         "loadBalancerFrontEndIPName": "[concat(parameters('prefix'), '-LBFE')]",
