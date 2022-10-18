@@ -103,14 +103,7 @@
             "metadata": {
                 "description": "Resource name begins with this prefix."
             }
-        },
-        "scriptContent": "
-          param([string] $name)
-          $output = \"Hello {0}\" -f $name
-          Write-Output $output
-          $DeploymentScriptOutputs = @{}
-          $DeploymentScriptOutputs['text'] = $output
-        ",
+        }       
      },
     "variables": {
         "loadBalancerFrontEndIPName": "[concat(parameters('prefix'), '-LBFE')]",
@@ -409,5 +402,12 @@
             "type": "string",
             "value": "[parameters('virtualNetworkAddressRange')]"
         }
+        "scriptContent": "
+      param([string] $name)
+      $output = 'Hello {0}. The username is {1}, the password is {2}.' -f $name,${Env:UserName},${Env:Password}
+      Write-Output $output
+      $DeploymentScriptOutputs = @{}
+      $DeploymentScriptOutputs['text'] = $output
+    ",
     }
 }
