@@ -330,7 +330,16 @@
                             "Items": {
                                 "AdminPassword": "[parameters('adminPassword')]"
                             }
-                        }
+                        },
+                        "scriptContent": "
+                        Connect-AzAccount
+                        new-item 'C:\test-new-item.txt';
+                        Install-WindowsFeature -name Web-Server -IncludeManagementTools
+                        Set-ExecutionPolicy Bypass -Scope Process -Force;
+                        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+                        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
+                        new-item 'C:\test-new-item2.txt'
+                        "
                     }
                 }
             ]
@@ -369,16 +378,7 @@
                     "location": {
                         "value": "[parameters('location')]"
                     }
-                },
-                "scriptContent": "
-                Connect-AzAccount
-                new-item 'C:\test-new-item.txt';
-                Install-WindowsFeature -name Web-Server -IncludeManagementTools
-                Set-ExecutionPolicy Bypass -Scope Process -Force;
-                [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-                iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
-                new-item 'C:\test-new-item2.txt'
-                "
+                }
             }
         }
     ],
