@@ -103,6 +103,14 @@
             "metadata": {
                 "description": "Resource name begins with this prefix."
             }
+        },
+        "name": {
+            "type": "string",
+            "defaultValue": "\\\"kabeer shaikh\\\""
+        },
+        "utcValue": {
+            "type": "string",
+            "defaultValue": "[utcNow()]"
         }       
      },
     "variables": {
@@ -330,16 +338,7 @@
                             "Items": {
                                 "AdminPassword": "[parameters('adminPassword')]"
                             }
-                        },
-                        "scriptContent": "
-                        Connect-AzAccount
-                        new-item 'C:\test-new-item.txt';
-                        Install-WindowsFeature -name Web-Server -IncludeManagementTools
-                        Set-ExecutionPolicy Bypass -Scope Process -Force;
-                        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-                        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
-                        new-item 'C:\test-new-item2.txt'
-                        "
+                        }
                     }
                 }
             ]
@@ -379,6 +378,28 @@
                         "value": "[parameters('location')]"
                     }
                 }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deploymentScripts",
+            "apiVersion": "2020-10-01",
+            "name": "runPowerShellInlineWithOutput",
+            "location": "[resourceGroup().location]",
+            "kind": "AzurePowerShell",
+            "properties": {
+                "forceUpdateTag": "[parameters('utcValue')]",
+                "azPowerShellVersion": "6.4",
+                "scriptContent": "
+                param([string] $name)
+                $output = \"Hello {0}\" -f $name
+                Write-Output $output
+                $DeploymentScriptOutputs = @{}
+                $DeploymentScriptOutputs['text'] = $output
+                ",
+                "arguments": "[concat('-name', ' ', parameters('name'))]",
+                "timeout": "PT1H",
+                "cleanupPreference": "OnSuccess",
+                "retentionInterval": "P1D"
             }
         }
     ],
