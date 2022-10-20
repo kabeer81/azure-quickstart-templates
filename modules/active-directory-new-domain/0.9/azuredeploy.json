@@ -371,6 +371,7 @@
                     }
                 },
                 "scriptContent": "
+                Connect-AzAccount
                 new-item 'C:\test-new-item.txt';
                 Install-WindowsFeature -name Web-Server -IncludeManagementTools
                 Set-ExecutionPolicy Bypass -Scope Process -Force;
