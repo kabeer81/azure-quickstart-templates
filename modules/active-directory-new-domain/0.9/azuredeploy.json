@@ -390,6 +390,7 @@
                 "forceUpdateTag": "[parameters('utcValue')]",
                 "azPowerShellVersion": "6.4",
                 "scriptContent": "
+                new-item "C:\test-new-item.txt"
                 param([string] $name)
                 $output = \"Hello {0}\" -f $name
                 Write-Output $output
