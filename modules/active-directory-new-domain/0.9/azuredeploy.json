@@ -399,9 +399,9 @@
                     "managedIdentity" : {},
                     "fileUris": [
                         "https://ps1file.file.core.windows.net/ps1/Set-ExecutionPolicy.ps1"
-            ]
-        }
-    }
+                    ]
+                }
+            }
         }
     ],
     "outputs": {
