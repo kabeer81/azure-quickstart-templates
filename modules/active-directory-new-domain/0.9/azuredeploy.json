@@ -104,13 +104,12 @@
                 "description": "Resource name begins with this prefix."
             }
         },
-        "name": {
-            "type": "string",
-            "defaultValue": "\\\"kabeer shaikh\\\""
+        "fileUris": {
+            "type": "String"
         },
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
+        "arguments": {
+            "defaultValue": " ",
+            "type": "SecureString"
         }       
      },
     "variables": {
@@ -120,7 +119,11 @@
         "networkInterfaceName": "[concat(parameters('prefix'), '-nic')]",
         "publicIPAddressName": "[concat(parameters('prefix'),'-ip')]",
         "availabilitySetName": "[concat(parameters('prefix'), '-AvailabiltySet')]",
-        "loadBalancerName": "[concat(parameters('prefix'),'-LoadBalancer')]"
+        "loadBalancerName": "[concat(parameters('prefix'),'-LoadBalancer')]",
+        "UriFileNamePieces": "[split(parameters('fileUris'), '/')]",
+        "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
+        "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
+        "firstFileName": "[variables('firstFileNameBreakString')[0]]"
     },
     "resources": [
         {
@@ -381,29 +384,20 @@
             }
         },
         {
-            "type": "Microsoft.Resources/deploymentScripts",
-            "apiVersion": "2020-10-01",
-            "name": "runPowerShellInlineWithOutput",
-            "location": "[resourceGroup().location]",
-            "kind": "AzurePowerShell",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2015-06-15",
+            "name": "[concat(parameters('virtualMachineName'),'/CustomScriptExtension')]",
+            "location": "[parameters('location')]",
             "properties": {
-                "forceUpdateTag": "[parameters('utcValue')]",
-                "azPowerShellVersion": "6.4",
-                "scriptContent": "
-                Set-ExecutionPolicy Bypass -Scope Process -Force; 
-                [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
-                iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
-                choco install postgresql13 -y --params '/Password:mois';
-                param([string] $name)
-                $output = \"Hello {0}\" -f $name
-                Write-Output $output
-                $DeploymentScriptOutputs = @{}
-                $DeploymentScriptOutputs['text'] = $output
-                ",
-                "arguments": "[concat('-name', ' ', parameters('name'))]",
-                "timeout": "PT1H",
-                "cleanupPreference": "OnSuccess",
-                "retentionInterval": "P1D"
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.9",
+                "autoUpgradeMinorVersion": true,
+                "settings": {},
+                "protectedSettings": {
+                    "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', parameters('arguments'))]",
+                    "fileUris": "[split(parameters('fileUris'), ' ')]"
+                }
             }
         }
     ],
