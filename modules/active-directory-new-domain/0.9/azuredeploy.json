@@ -113,7 +113,7 @@
         "publicIPAddressName": "[concat(parameters('prefix'),'-ip')]",
         "availabilitySetName": "[concat(parameters('prefix'), '-AvailabiltySet')]",
         "loadBalancerName": "[concat(parameters('prefix'),'-LoadBalancer')]",
-        "virtualMachineName": "[parameters('prefix')]"
+        "virtualMachineName": "[parameters('virtualMachineName')]"
     },
     "resources": [
         {
