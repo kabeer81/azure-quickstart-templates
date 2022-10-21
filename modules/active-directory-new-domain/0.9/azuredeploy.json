@@ -349,6 +349,9 @@
                     "apiVersion": "2015-06-15",
                     "name": "[concat(parameters('virtualMachineName'),'/CustomScriptExtension')]",
                     "location": "[parameters('location')]",
+                    "dependsOn": [
+                        "[parameters('virtualMachineName')]"
+                    ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
                         "type": "CustomScriptExtension",
