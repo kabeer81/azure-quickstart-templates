@@ -103,13 +103,6 @@
             "metadata": {
                 "description": "Resource name begins with this prefix."
             }
-        },
-        "fileUris": {
-            "type": "String"
-        },
-        "arguments": {
-            "defaultValue": " ",
-            "type": "SecureString"
         }       
      },
     "variables": {
