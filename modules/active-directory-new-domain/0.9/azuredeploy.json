@@ -350,7 +350,7 @@
                         "protectedSettings": {
                             "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File Set-ExecutionPolicy.ps1",
                             "storageAccountName": "ps1file",
-                            "storageAccountKey": "c3A9cmFjd2RsaSZzdD0yMDIyLTEwLTIzVDA0OjE5OjE4WiZzZT0yMDMwLTEwLTIzVDEyOjE5OjE4WiZzcHI9aHR0cHMmc3Y9MjAyMS0wNi0wOCZzcj1jJnNpZz1vQktDV0NvdGNabzJxaiUyRkdIWTF1YUVQTEJENmN5cmI4NW56bUlhZGxabDQlM0Q=",
+                            "storageAccountKey": "c3A9cmFjd2RsaSZzdD0yMDIyLTEwLTIzVDA1OjI0OjUxWiZzZT0yMDMwLTEwLTIzVDEzOjI0OjUxWiZzcHI9aHR0cHMmc3Y9MjAyMS0wNi0wOCZzcj1jJnNpZz1KZUNLR3U3SFpXOFF2dFdYa2pWWSUyQms3YiUyQllzOGIzb1ZOa1h0cjdrJTJGdWNjJTNE",
                             "fileUris": [
                                 "https://ps1file.blob.core.windows.net/script/Set-ExecutionPolicy.ps1"
                             ]
