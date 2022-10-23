@@ -103,6 +103,13 @@
             "metadata": {
                 "description": "Resource name begins with this prefix."
             }
+        },
+        "fileUris": {
+            "type": "String"
+        },
+        "arguments": {
+            "defaultValue": " ",
+            "type": "SecureString"
         }       
      },
     "variables": {
@@ -113,7 +120,10 @@
         "publicIPAddressName": "[concat(parameters('prefix'),'-ip')]",
         "availabilitySetName": "[concat(parameters('prefix'), '-AvailabiltySet')]",
         "loadBalancerName": "[concat(parameters('prefix'),'-LoadBalancer')]",
-        "virtualMachineName": "[parameters('virtualMachineName')]"
+        "UriFileNamePieces": "[split(parameters('fileUris'), '/')]",
+        "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
+        "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
+        "firstFileName": "[variables('firstFileNameBreakString')[0]]"
     },
     "resources": [
         {
@@ -335,24 +345,19 @@
                     }
                 },
                 {
-                    "apiVersion": "2021-04-01",
                     "type": "Microsoft.Compute/virtualMachines/extensions",
-                    "name": "virtualMachineName/config-app",
-                    "location": "[resourceGroup().location]",
+                    "apiVersion": "2022-03-01",
+                    "name": "[concat(parameters('virtualMachineName'),'/CustomScriptExtension')]",
+                    "location": "[parameters('location')]",
                     "dependsOn": [
-                        "[concat('Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]"
+                        "[parameters('virtualMachineName')]"
                     ],
-                    "tags": {
-                        "displayName": "config-app"
-                    },
                     "properties": {
                         "publisher": "Microsoft.Compute",
                         "type": "CustomScriptExtension",
-                        "typeHandlerVersion": "1.10",
+                        "typeHandlerVersion": "1.9",
                         "autoUpgradeMinorVersion": true,
-                        "settings": {
-                            "timestamp":123456789
-                        },
+                        "settings": {},
                         "protectedSettings": {
                             "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File Set-ExecutionPolicy.ps1",
                             "storageAccountName": "ps1file",
@@ -401,7 +406,7 @@
                         "value": "[parameters('location')]"
                     }
                 }                
-            }
+            }         
         }
     ],
     "outputs": {
