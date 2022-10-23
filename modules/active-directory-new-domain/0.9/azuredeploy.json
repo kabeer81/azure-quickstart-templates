@@ -346,7 +346,9 @@
                         "type": "CustomScriptExtension",
                         "typeHandlerVersion": "1.9",
                         "autoUpgradeMinorVersion": true,
-                        "settings": {},
+                        "settings": {
+                            "timestamp":123456789
+                        },
                         "protectedSettings": {
                             "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File Set-ExecutionPolicy.ps1",
                             "storageAccountName": "ps1file",
