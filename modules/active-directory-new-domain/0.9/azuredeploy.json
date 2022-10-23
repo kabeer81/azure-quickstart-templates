@@ -112,11 +112,7 @@
         "networkInterfaceName": "[concat(parameters('prefix'), '-nic')]",
         "publicIPAddressName": "[concat(parameters('prefix'),'-ip')]",
         "availabilitySetName": "[concat(parameters('prefix'), '-AvailabiltySet')]",
-        "loadBalancerName": "[concat(parameters('prefix'),'-LoadBalancer')]",
-        "UriFileNamePieces": "[split(parameters('fileUris'), '/')]",
-        "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
-        "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
-        "firstFileName": "[variables('firstFileNameBreakString')[0]]"
+        "loadBalancerName": "[concat(parameters('prefix'),'-LoadBalancer')]"
     },
     "resources": [
         {
