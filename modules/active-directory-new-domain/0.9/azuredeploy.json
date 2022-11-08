@@ -415,7 +415,7 @@
             "name": "testnsg",
             "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/testnsg",
             "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2020-05-01",
+            "apiVersion": "2022-05-01",
             "location": "eastus",
             "properties": {
                 "provisioningState": "Succeeded",
