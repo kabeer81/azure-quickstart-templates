@@ -517,7 +517,42 @@
                     "direction": "Outbound"
                     }
                 }
+                ],
+                "networkInterfaces": [
+                    {
+                        "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+                    }
                 ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/applicationSecurityGroups",
+            "apiVersion": "2022-05-01",
+            "name": "<prefix>-asg-web",
+            "location": "[parameters('location')]",
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "00000000-0000-0000-0000-000000000000"
+            }
+        },
+        {
+            "type": "Microsoft.Network/applicationSecurityGroups",
+            "apiVersion": "2022-05-01",
+            "name": "<prefix>-asg-rdgw",
+            "location": "[parameters('location')]",
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "00000000-0000-0000-0000-000000000000"
+            }
+        },
+        {
+            "type": "Microsoft.Network/applicationSecurityGroups",
+            "apiVersion": "2022-05-01",
+            "name": "<prefix>-asg-rdsh",
+            "location": "[parameters('location')]",
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "00000000-0000-0000-0000-000000000000"
             }
         }
     ],
