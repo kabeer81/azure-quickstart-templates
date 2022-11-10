@@ -283,8 +283,8 @@
                     "imageReference": {
                         "publisher": "MicrosoftWindowsServer",
                         "offer": "WindowsServer",
-                        "sku": "2016-Datacenter",
-                        "version": "2016.127.20190416"  // use latest after https://support.microsoft.com/en-us/topic/kb5004442-manage-changes-for-windows-dcom-server-security-feature-bypass-cve-2021-26414-f1400b52-c141-43d2-941e-37ed901c769c is addressed
+                        "sku": "2022-Datacenter",
+                        "version": "20348.1006.220908"  // use latest after https://support.microsoft.com/en-us/topic/kb5004442-manage-changes-for-windows-dcom-server-security-feature-bypass-cve-2021-26414-f1400b52-c141-43d2-941e-37ed901c769c is addressed
                     },
                     "osDisk": {
                         "name": "[concat(parameters('prefix'),'_OSDisk')]",
@@ -528,7 +528,7 @@
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
             "apiVersion": "2022-05-01",
-            "name": "<prefix>-asg-web",
+            "name": "[concat(parameters('prefix'), '-asg-web')]",
             "location": "[parameters('location')]",
             "properties": {
                 "provisioningState": "Succeeded",
@@ -538,7 +538,7 @@
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
             "apiVersion": "2022-05-01",
-            "name": "<prefix>-asg-rdgw",
+            "name": "[concat(parameters('prefix'), '-asg-rdgw')]",
             "location": "[parameters('location')]",
             "properties": {
                 "provisioningState": "Succeeded",
@@ -548,7 +548,7 @@
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
             "apiVersion": "2022-05-01",
-            "name": "<prefix>-asg-rdsh",
+            "name": "[concat(parameters('prefix'), '-asg-rdsh')]",
             "location": "[parameters('location')]",
             "properties": {
                 "provisioningState": "Succeeded",
