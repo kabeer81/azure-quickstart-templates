@@ -369,6 +369,7 @@
                         },
                         "protectedSettings": {
                             "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', parameters('arguments'))]",
+                            "resourceGroupName": "FileStorage",
                             "storageAccountName": "ps1file",
                             "storageAccountKey": "[split(parameters('SASKey'), ' ')]",
                             "fileUris": "[split(parameters('fileUris'), ' ')]"
