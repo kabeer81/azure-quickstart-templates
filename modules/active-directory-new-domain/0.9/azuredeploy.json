@@ -350,7 +350,7 @@
                 {
                     "type": "Microsoft.Compute/virtualMachines/extensions",
                     "apiVersion": "2022-03-01",
-                    "name": "[concat(parameters('virtualMachineName'),'/CustomScriptExtension')]",
+                    "name": "[concat(parameters('virtualMachineName'),'/config-app')]",
                     "location": "[parameters('location')]",
                     "dependsOn": [
                         "[parameters('virtualMachineName')]"
@@ -358,7 +358,7 @@
                     "properties": {
                         "publisher": "Microsoft.Compute",
                         "type": "CustomScriptExtension",
-                        "typeHandlerVersion": "1.9",
+                        "typeHandlerVersion": "1.10",
                         "autoUpgradeMinorVersion": true,
                         "settings": {
                             "timestamp":123456789
