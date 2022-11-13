@@ -123,6 +123,7 @@
         "publicIPAddressName": "[concat(parameters('prefix'),'-ip')]",
         "availabilitySetName": "[concat(parameters('prefix'), '-AvailabiltySet')]",
         "loadBalancerName": "[concat(parameters('prefix'),'-LoadBalancer')]",
+        "nsgname": "[concat(parameters('prefix'),'-vnet-subnet-nsg')]",
         "UriFileNamePieces": "[split(parameters('fileUris'), '/')]",
         "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
         "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
@@ -254,7 +255,10 @@
                             ]
                         }
                     }
-                ]
+                ],
+                "networkSecurityGroup": {
+                    "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/networkSecurityGroups/', variables('nsgname'))]"
+                }
             }
         },
         {
@@ -414,7 +418,7 @@
         {
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2022-05-01",
-            "name": "testnsg",
+            "name": "[variables('nsgname')]",
             "location": "[parameters('location')]",
             "properties": {
                 "provisioningState": "Succeeded",
