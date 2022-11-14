@@ -130,7 +130,8 @@
         "UriFileNamePieces": "[split(parameters('fileUris'), '/')]",
         "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
         "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
-        "firstFileName": "[variables('firstFileNameBreakString')[0]]"
+        "firstFileName": "[variables('firstFileNameBreakString')[0]]",
+        "SASKey": "[parameters('SASkey')]"
     },
     "resources": [
         {
@@ -373,7 +374,7 @@
                         "protectedSettings": {
                             "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', parameters('arguments'))]",
                             "storageAccountName": "ps1file",
-                            "storageAccountKey": "[parameters('SASkey')]",
+                            "storageAccountKey": "[variables('SASKey')]",
                             "fileUris": "[split(parameters('fileUris'), ' ')]"
                             
                         }
