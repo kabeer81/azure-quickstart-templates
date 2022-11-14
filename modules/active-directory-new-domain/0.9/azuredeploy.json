@@ -110,6 +110,12 @@
         "arguments": {
             "defaultValue": " ",
             "type": "SecureString"
+        },
+        "SASkey": {
+            "type": "securestring",
+            "metadata": {
+                "description": "The SAS Key for the Storage Account"
+            }
         }   
      },
     "variables": {
@@ -367,14 +373,7 @@
                         "protectedSettings": {
                             "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', parameters('arguments'))]",
                             "storageAccountName": "ps1file",
-                            "storageAccountKey": {
-                                "reference": {
-                                    "keyVault": {
-                                    "id": "/subscriptions/ed735634-dd41-4dcd-a612-b6e20d6fd9a0/resourceGroups/FileStorage/providers/Microsoft.KeyVault/vaults/Devsaskeys"
-                                    },
-                                    "secretName": "SASkey"
-                                }
-                                },
+                            "storageAccountKey": "[parameters('SASkey')]",
                             "fileUris": "[split(parameters('fileUris'), ' ')]"
                             
                         }
@@ -442,6 +441,22 @@
                     "destinationAddressPrefix": "VirtualNetwork",
                     "access": "Allow",
                     "priority": 65000,
+                    "direction": "Inbound"
+                    }
+                },
+                {
+                    "name": "web",
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/variables('nsgname')/defaultSecurityRules/AllowVnetInBound",
+                    "properties": {
+                    "provisioningState": "Succeeded",
+                    "description": "Allow inbound traffic from all VMs in VNET",
+                    "protocol": "tcp",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "destinationAddressPrefix": "VirtualNetwork",
+                    "access": "Allow",
+                    "priority": 443,
                     "direction": "Inbound"
                     }
                 },
