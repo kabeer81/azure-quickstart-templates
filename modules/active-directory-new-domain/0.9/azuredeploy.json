@@ -454,7 +454,7 @@
                 "securityRules": [
                 {
                     "name": "AllowCustomWeb",
-                    "id": "/subscriptions/MOIS Cloud Development/resourceGroups/moisaio/providers/Microsoft.Network/networkSecurityGroups/moiskabeer-vnet-subnet-nsg/securityRules/web",
+                    "id": "/subscriptions/MOIS Cloud Development/resourceGroups/moisaio/providers/Microsoft.Network/networkSecurityGroups/moiskabeer-vnet-subnet-nsg/securityRules/AllowCustomWeb",
                     "properties": {
                     "provisioningState": "Succeeded",
                     "description": "Allow custom traffic from all VMs in VNET",
