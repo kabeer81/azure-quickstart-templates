@@ -462,8 +462,7 @@
                     "sourcePortRange": "*",
                     "destinationPortRange": "443",
                     "sourceAddressPrefix": "Any",
-                    "destinationAddressPrefix": "ApplicationSecurityGroup",
-                    "destinationApplicationSecurityGroups": "moiskabeer-asg-web",
+                    "destinationAddressPrefix": "VirtualNetwork",
                     "access": "Allow",
                     "priority": 100,
                     "direction": "Inbound"
