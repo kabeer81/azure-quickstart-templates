@@ -463,7 +463,7 @@
                     "destinationPortRange": "443",
                     "sourceAddressPrefix": "Any",
                     "destinationAddressPrefix": "applicationSecurityGroup",
-                    "destinationApplicationSecurityGroups": "[concat(parameters('prefix'), '-asg-web')]",
+                    "destinationApplicationSecurityGroups": "moiskabeer-asg-web",
                     "access": "Allow",
                     "priority": 100,
                     "direction": "Inbound"
