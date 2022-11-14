@@ -461,7 +461,7 @@
                     "protocol": "tcp",
                     "sourcePortRange": "*",
                     "destinationPortRange": "443",
-                    "sourceAddressPrefix": "Any",
+                    "sourceAddressPrefix": "VirtualNetwork",
                     "destinationAddressPrefix": "VirtualNetwork",
                     "access": "Allow",
                     "priority": 100,
