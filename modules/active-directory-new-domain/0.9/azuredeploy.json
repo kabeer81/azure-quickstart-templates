@@ -496,7 +496,7 @@
                     "sourceAddressPrefix": "VirtualNetwork",
                     "destinationAddressPrefix": "VirtualNetwork",
                     "access": "Allow",
-                    "priority": 100,
+                    "priority": 120,
                     "direction": "Inbound"
                     }
                 }
