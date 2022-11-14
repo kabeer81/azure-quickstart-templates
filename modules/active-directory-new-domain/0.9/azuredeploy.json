@@ -460,10 +460,10 @@
                     "description": "Allow custom traffic from all VMs in VNET",
                     "protocol": "tcp",
                     "sourcePortRange": "*",
-                    "destinationApplicationSecurityGroups": "[concat(parameters('prefix'), '-asg-web')]",
                     "destinationPortRange": "443",
                     "sourceAddressPrefix": "Any",
                     "destinationAddressPrefix": "applicationSecurityGroup",
+                    "destinationApplicationSecurityGroups": "[concat(parameters('prefix'), '-asg-web')]",
                     "access": "Allow",
                     "priority": 100,
                     "direction": "Inbound"
