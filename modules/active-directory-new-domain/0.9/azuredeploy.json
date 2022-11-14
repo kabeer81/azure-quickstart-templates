@@ -461,8 +461,12 @@
                     "protocol": "tcp",
                     "sourcePortRange": "*",
                     "destinationPortRange": "443",
-                    "sourceAddressPrefix": "VirtualNetwork",
-                    "destinationAddressPrefix": "VirtualNetwork",
+                    "sourceAddressPrefix": "*",
+                    "destinationApplicationSecurityGroups": [
+                                        {
+                                            "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', concat(parameters('prefix'), '-asg-web'))]"
+                                        }
+                                        ],
                     "access": "Allow",
                     "priority": 100,
                     "direction": "Inbound"
