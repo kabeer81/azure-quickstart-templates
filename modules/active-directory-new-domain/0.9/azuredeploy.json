@@ -112,7 +112,7 @@
             "type": "SecureString"
         },
         "SASkey": {
-            "type": "securestring",
+            "type": "String",
             "metadata": {
                 "description": "The SAS Key for the Storage Account"
             }
