@@ -504,7 +504,7 @@
                 "defaultSecurityRules": [
                 {
                     "name": "AllowVnetInBound",
-                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/variables('nsgname')/defaultSecurityRules/AllowVnetInBound",
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/moiskabeer-vnet-subnet-nsg/defaultSecurityRules/AllowVnetInBound",
                     "properties": {
                     "provisioningState": "Succeeded",
                     "description": "Allow inbound traffic from all VMs in VNET",
