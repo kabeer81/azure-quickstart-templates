@@ -427,7 +427,24 @@
             "properties": {
                 "provisioningState": "Succeeded",
                 "flushConnection": false,
-                "securityRules": [],
+                "securityRules": [
+                {
+                    "name": "AllowCustomWeb",
+                    "id": "/subscriptions/MOIS Cloud Development/resourceGroups/moisaio/providers/Microsoft.Network/networkSecurityGroups/moiskabeer-vnet-subnet-nsg/securityRules/web",
+                    "properties": {
+                    "provisioningState": "Succeeded",
+                    "description": "Allow custom traffic from all VMs in VNET",
+                    "protocol": "tcp",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "443",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "destinationAddressPrefix": "VirtualNetwork",
+                    "access": "Allow",
+                    "priority": 100,
+                    "direction": "Inbound"
+                    }
+                }
+                ],
                 "defaultSecurityRules": [
                 {
                     "name": "AllowVnetInBound",
@@ -444,23 +461,7 @@
                     "priority": 65000,
                     "direction": "Inbound"
                     }
-                },
-                {
-                    "name": "web",
-                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/variables('nsgname')/defaultSecurityRules/AllowVnetInBound",
-                    "properties": {
-                    "provisioningState": "Succeeded",
-                    "description": "Allow inbound traffic from all VMs in VNET",
-                    "protocol": "tcp",
-                    "sourcePortRange": "*",
-                    "destinationPortRange": "*",
-                    "sourceAddressPrefix": "VirtualNetwork",
-                    "destinationAddressPrefix": "VirtualNetwork",
-                    "access": "Allow",
-                    "priority": 443,
-                    "direction": "Inbound"
-                    }
-                },
+                },  
                 {
                     "name": "AllowAzureLoadBalancerInBound",
                     "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/testnsg/defaultSecurityRules/AllowAzureLoadBalancerInBound",
