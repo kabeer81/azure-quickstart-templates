@@ -224,6 +224,30 @@
                             "backendPort": 3389,
                             "enableFloatingIP": false
                         }
+                    },
+                    {
+                        "name": "TCPnatRule",
+                        "properties": {
+                            "frontendIPConfiguration": {
+                                "id": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', variables('loadBalancerName'), variables('loadBalancerFrontEndIPName'))]"
+                            },
+                            "protocol": "Tcp",
+                            "frontendPort": 443,
+                            "backendPort": 443,
+                            "enableFloatingIP": false
+                        }
+                    },
+                    {
+                        "name": "UDPnatRule",
+                        "properties": {
+                            "frontendIPConfiguration": {
+                                "id": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', variables('loadBalancerName'), variables('loadBalancerFrontEndIPName'))]"
+                            },
+                            "protocol": "UDP",
+                            "frontendPort": 3391,
+                            "backendPort": 3391,
+                            "enableFloatingIP": false
+                        }
                     }
                 ]
             }
@@ -437,6 +461,38 @@
                     "protocol": "tcp",
                     "sourcePortRange": "*",
                     "destinationPortRange": "443",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "destinationAddressPrefix": "VirtualNetwork",
+                    "access": "Allow",
+                    "priority": 100,
+                    "direction": "Inbound"
+                    }
+                },
+                {
+                    "name": "AllowCustomRdgb",
+                    "id": "/subscriptions/MOIS Cloud Development/resourceGroups/moisaio/providers/Microsoft.Network/networkSecurityGroups/moiskabeer-vnet-subnet-nsg/securityRules/AllowCustomRdgb",
+                    "properties": {
+                    "provisioningState": "Succeeded",
+                    "description": "Allow custom traffic from all VMs in VNET",
+                    "protocol": "udp",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "3391",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "destinationAddressPrefix": "VirtualNetwork",
+                    "access": "Allow",
+                    "priority": 110,
+                    "direction": "Inbound"
+                    }
+                },
+                {
+                    "name": "AllowCustomRdsh",
+                    "id": "/subscriptions/MOIS Cloud Development/resourceGroups/moisaio/providers/Microsoft.Network/networkSecurityGroups/moiskabeer-vnet-subnet-nsg/securityRules/AllowCustomRdsh",
+                    "properties": {
+                    "provisioningState": "Succeeded",
+                    "description": "Allow custom traffic from all VMs in VNET",
+                    "protocol": "tcp",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "3389",
                     "sourceAddressPrefix": "VirtualNetwork",
                     "destinationAddressPrefix": "VirtualNetwork",
                     "access": "Allow",
