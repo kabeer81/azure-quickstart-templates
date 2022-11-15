@@ -310,6 +310,17 @@
                                 {
                                     "id": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', variables('loadBalancerName'), variables('inboundNatRulesName'))]"
                                 }
+                            ],
+                            "applicationSecurityGroups": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', concat(parameters('prefix'), '-asg-web'))]"
+                                },
+                                {
+                                    "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', concat(parameters('prefix'), '-asg-rdgw'))]"  
+                                },
+                                {
+                                    "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', concat(parameters('prefix'), '-asg-rdsh'))]"
+                                }
                             ]
                         }
                     }
@@ -373,17 +384,6 @@
                     "networkInterfaces": [
                         {
                             "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
-                        }
-                    ],
-                    "applicationSecurityGroups": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', concat(parameters('prefix'), '-asg-web'))]"
-                        },
-                        {
-                            "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', concat(parameters('prefix'), '-asg-rdgw'))]"  
-                        },
-                        {
-                            "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', concat(parameters('prefix'), '-asg-rdsh'))]"
                         }
                     ]
                 }
