@@ -3,22 +3,30 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
         },
         "networkInterfaceName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "phrdvccad21-Nic"
         },
         "networkSecurityGroupName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "phrdvccad21-NSG"
         },
         "networkSecurityGroupRules": {
             "type": "array"
         },
         "subnetName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Subnet"
         },
         "virtualNetworkName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "phrdvccad21-VNET"
         },
         "addressPrefixes": {
             "type": "array"
@@ -27,34 +35,64 @@
             "type": "array"
         },
         "publicIpAddressName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "phrdvccad21-PublicIP"
         },
         "publicIpAddressType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Dynamic",
+            "allowedValues": [
+                "Dynamic",
+                "Static"
+            ],
+            "metadata": {
+                "description": "Allocation method for the Public IP used to access the Virtual Machine."
+            }
         },
         "publicIpAddressSku": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Basic",
+            "allowedValues": [
+                "Basic",
+                "Standard"
+            ],
+            "metadata": {
+                "description": "SKU for the Public IP used to access the Virtual Machine."
+            }
         },
         "pipDeleteOption": {
             "type": "string"
         },
         "virtualMachineName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "phrdvccad21",
+            "metadata": {
+                "description": "Name of the virtual machine."
+            }
         },
         "virtualMachineComputerName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "phrdvccad21",
+            "metadata": {
+                "description": "Name of Computer."
+            }
         },
         "virtualMachineRG": {
             "type": "string"
         },
         "osDiskType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "StandardSSD_LRS"  
         },
         "osDiskDeleteOption": {
             "type": "string"
         },
         "virtualMachineSize": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Standard_B2s",
+            "metadata": {
+                "description": "Size of the virtual machine."
+            }
         },
         "nicDeleteOption": {
             "type": "string"
