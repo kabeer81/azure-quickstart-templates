@@ -18,7 +18,7 @@
     },
     "virtualMachineSize": {
       "type": "string",
-      "defaultValue": "Standard_B4ms",
+      "defaultValue": "Standard_D2s_v4",
       "metadata": {
         "description": "The virtual machine size."
       }
