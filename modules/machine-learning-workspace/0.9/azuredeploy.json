@@ -132,7 +132,7 @@
     },
     "sqlTempDbDisksCount": {
       "type": "int",
-      "defaultValue": 1,
+      "defaultValue": 2,
       "maxValue": 8,
       "minValue": 1,
       "metadata": {
@@ -232,7 +232,7 @@
             }
           }
         ],
-        "enableAcceleratedNetworking": true,
+        "enableAcceleratedNetworking": false,
         "networkSecurityGroup": {
           "id": "[variables('nsgId')]"
         }
