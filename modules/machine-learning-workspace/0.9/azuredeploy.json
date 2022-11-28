@@ -116,7 +116,7 @@
     },
     "sqlLogDisksCount": {
       "type": "int",
-      "defaultValue": 2,
+      "defaultValue": 1,
       "maxValue": 8,
       "minValue": 1,
       "metadata": {
@@ -132,7 +132,7 @@
     },
     "sqlTempDbDisksCount": {
       "type": "int",
-      "defaultValue": 3,
+      "defaultValue": 2,
       "maxValue": 8,
       "minValue": 1,
       "metadata": {
@@ -180,7 +180,7 @@
     "subnetRef": "[resourceId(parameters('existingVnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('existingVirtualNetworkName'), parameters('existingSubnetName'))]",
     "dataDisksLuns": "[range(0, parameters('sqlDataDisksCount'))]",
     "logDisksLuns": "[range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount'))]",
-    "TempDbDisksLuns": "[range(parameters('sqlLogDisksCount'), parameters('sqlTempDbDisksCount'))]"
+    "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]"
     /*"dataDisks": {
       "createOption": "Empty",
       "caching": "ReadOnly",
