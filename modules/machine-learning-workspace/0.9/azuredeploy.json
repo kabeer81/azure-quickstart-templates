@@ -132,7 +132,7 @@
     },
     "sqlTempDbDisksCount": {
       "type": "int",
-      "defaultValue": 2,
+      "defaultValue": 1,
       "maxValue": 8,
       "minValue": 1,
       "metadata": {
@@ -252,22 +252,22 @@
           "vmSize": "[parameters('virtualMachineSize')]"
         },
         "storageProfile": {
-         /* "copy": [
+          "copy": [
             {
               "name": "dataDisks",
               "count": "[length(range(0, add(parameters('sqlDataDisksCount'), add(parameters('sqlLogDisksCount'), parameters('sqlTempDbDisksCount')))))]",
               "input": {
                 "lun": "[range(0, add(parameters('sqlDataDisksCount'), add(parameters('sqlLogDisksCount'), parameters('sqlTempDbDisksCount'))))]",
-                "createOption": "[variables('dataDisks').createOption]",
+               /* "createOption": "[variables('dataDisks').createOption]",
                 "caching": "[if(greaterOrEquals(range(0, add(parameters('sqlDataDisksCount'), add(parameters('sqlLogDisksCount'), parameters('sqlTempDbDisksCount')))), parameters('sqlDataDisksCount')), 'None', variables('dataDisks').caching)]",
                 "writeAcceleratorEnabled": "[variables('dataDisks').writeAcceleratorEnabled]",
                 "diskSizeGB": "[variables('dataDisks').diskSizeGB]",
                 "managedDisk": {
                   "storageAccountType": "[variables('dataDisks').storageAccountType]"
-                }
+                }*/
               }
             }
-          ],*/
+          ],
           "osDisk": {
             "createOption": "FromImage",
             "managedDisk": {
