@@ -277,7 +277,7 @@
                     "writeAcceleratorEnabled": false,
                     "managedDisk": {
                         "storageAccountType": "Premium_LRS",
-                        "id": "none"
+                        "id": "/subscriptions/15b2c016-c69e-4ef0-9265-2247cdfcf097/resourceGroups/phrdvcc2/providers/Microsoft.Compute/disks/phrdvccsql21-sql1-Data"
                     },
                     "diskSizeGB": 63
                 },
