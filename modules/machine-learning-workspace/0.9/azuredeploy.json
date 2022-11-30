@@ -132,7 +132,7 @@
     },
     "sqlTempDbDisksCount": {
       "type": "int",
-      "defaultValue": 2,
+      "defaultValue": 1,
       "maxValue": 8,
       "minValue": 1,
       "metadata": {
@@ -180,15 +180,15 @@
     "subnetRef": "[resourceId(parameters('existingVnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('existingVirtualNetworkName'), parameters('existingSubnetName'))]",
     "dataDisksLuns": "[range(0, parameters('sqlDataDisksCount'))]",
     "logDisksLuns": "[range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount'))]",
-    "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]"
-    /*"dataDisks": {
+    "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]",
+    "dataDisks": {
       "createOption": "Empty",
       "caching": "ReadOnly",
       "writeAcceleratorEnabled": false,
       "storageAccountType": "Premium_LRS",
       "diskSizeGB": 1023
-    },
-    "tempDbPath": "D:\\SQLTemp"*/
+    }
+    /*"tempDbPath": "D:\\SQLTemp"*/
   },
   "resources": [
     {
@@ -252,7 +252,7 @@
           "vmSize": "[parameters('virtualMachineSize')]"
         },
         "storageProfile": {
-         /* "copy": [
+          "copy": [
             {
               "name": "dataDisks",
               "count": "[length(range(0, add(parameters('sqlDataDisksCount'), add(parameters('sqlLogDisksCount'), parameters('sqlTempDbDisksCount')))))]",
@@ -267,7 +267,7 @@
                 }
               }
             }
-          ],*/
+          ],
           "osDisk": {
             "createOption": "FromImage",
             "managedDisk": {
