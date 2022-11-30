@@ -180,7 +180,7 @@
     "subnetRef": "[resourceId(parameters('existingVnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('existingVirtualNetworkName'), parameters('existingSubnetName'))]",
     "dataDisksLuns": "[range(0, parameters('sqlDataDisksCount'))]",
     "logDisksLuns": "[range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount'))]",
-    "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]"
+    "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]",
     "dataDisks": {
       "createOption": "Empty",
       "caching": "ReadOnly",
