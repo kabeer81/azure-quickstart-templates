@@ -132,7 +132,7 @@
     },
     "sqlTempDbDisksCount": {
       "type": "int",
-      "defaultValue": 2,
+      "defaultValue": 1,
       "maxValue": 8,
       "minValue": 1,
       "metadata": {
@@ -182,7 +182,7 @@
     "logDisksLuns": "[range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount'))]",
     "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]",
     "dataDisks": {
-      "createOption": "attach",
+      "createOption": "Empty",
       "caching": "ReadOnly",
       "writeAcceleratorEnabled": false,
       "storageAccountType": "Premium_LRS",
