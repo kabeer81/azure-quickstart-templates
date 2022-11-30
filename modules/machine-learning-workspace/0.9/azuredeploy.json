@@ -272,6 +272,18 @@
               }
             }
           ],*/
+          "osDisk": {
+            "createOption": "FromImage",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
+            }
+          },
+          "imageReference": {
+            "publisher": "MicrosoftSQLServer",
+            "offer": "[parameters('imageOffer')]",
+            "sku": "[parameters('sqlSku')]",
+            "version": "latest"
+          },
           "dataDisks": [
                 {
                     "lun": 0,
@@ -309,19 +321,7 @@
                     },
                     "diskSizeGB": 31
                 }
-            ],
-          "osDisk": {
-            "createOption": "FromImage",
-            "managedDisk": {
-              "storageAccountType": "Premium_LRS"
-            }
-          },
-          "imageReference": {
-            "publisher": "MicrosoftSQLServer",
-            "offer": "[parameters('imageOffer')]",
-            "sku": "[parameters('sqlSku')]",
-            "version": "latest"
-          }
+            ]
         },
         "networkProfile": {
           "networkInterfaces": [
