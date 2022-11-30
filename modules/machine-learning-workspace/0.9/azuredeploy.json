@@ -259,7 +259,7 @@
               "input": {
                 "lun": "[range(0, add(parameters('sqlDataDisksCount'), add(parameters('sqlLogDisksCount'), parameters('sqlTempDbDisksCount'))))]",
                 "createOption": "[variables('dataDisks').createOption]",
-                "caching": "[if(greaterOrEquals(range(0, add(parameters('sqlDataDisksCount'), add(parameters('sqlLogDisksCount'), parameters('sqlTempDbDisksCount')))), parameters('sqlDataDisksCount')), 'None', variables('dataDisks').caching)]",
+                "caching": "[if(greaterOrEquals(range(0, add(parameters('sqlDataDisksCount'), add(parameters('sqlLogDisksCount'), parameters('sqlTempDbDisksCount'))))[copyIndex('dataDisks')], parameters('sqlDataDisksCount')), 'None', variables('dataDisks').caching)]",
                 "writeAcceleratorEnabled": "[variables('dataDisks').writeAcceleratorEnabled]",
                 "diskSizeGB": "[variables('dataDisks').diskSizeGB]",
                 "managedDisk": {
