@@ -279,7 +279,7 @@
                         "storageAccountType": "Premium_LRS",
                         "id": "[resourceId('Microsoft.Compute/disks/', concat(parameters('virtualMachineName'), '-sql1-Data'))]"
                     },
-                    "diskSizeGB": 63
+                    "diskSizeGB": 1023
                 },
                 {
                     "lun": 1,
