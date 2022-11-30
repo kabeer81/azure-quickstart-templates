@@ -274,9 +274,10 @@
                     "name": "[concat(parameters('virtualMachineName'),'-sql1-Data')]",
                     "createOption": "Attach",
                     "caching": "None",
+                    "writeAcceleratorEnabled": false,
                     "managedDisk": {
-                        "storageAccountType": "Standard_LRS",
-                        "id": "/subscriptions/15b2c016-c69e-4ef0-9265-2247cdfcf097/resourceGroups/phrdvcc2/providers/Microsoft.Compute/disks/phrdvccsql21-sql1-Data"
+                        "storageAccountType": "Premium_LRS",
+                        
                     },
                     "diskSizeGB": 63
                 },
@@ -285,8 +286,9 @@
                     "name": "[concat(parameters('virtualMachineName'),'-sql1-Logs')]",
                     "createOption": "Attach",
                     "caching": "None",
+                    "writeAcceleratorEnabled": false,
                     "managedDisk": {
-                        "storageAccountType": "Standard_LRS",
+                        "storageAccountType": "Premium_LRS",
                         "id": "/subscriptions/15b2c016-c69e-4ef0-9265-2247cdfcf097/resourceGroups/phrdvcc2/providers/Microsoft.Compute/disks/phrdvccsql21-sql1-Logs"
                     },
                     "diskSizeGB": 127
@@ -296,8 +298,9 @@
                     "name": "[concat(parameters('virtualMachineName'),'-sql1-TempDb')]",
                     "createOption": "Attach",
                     "caching": "None",
+                    "writeAcceleratorEnabled": false,
                     "managedDisk": {
-                        "storageAccountType": "Standard_LRS",
+                        "storageAccountType": "Premium_LRS",
                         "id": "/subscriptions/15b2c016-c69e-4ef0-9265-2247cdfcf097/resourceGroups/phrdvcc2/providers/Microsoft.Compute/disks/phrdvccsql21-sql1-TempDb"
                     },
                     "diskSizeGB": 31
