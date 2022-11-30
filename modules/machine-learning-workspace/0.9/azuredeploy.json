@@ -180,15 +180,15 @@
     "subnetRef": "[resourceId(parameters('existingVnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('existingVirtualNetworkName'), parameters('existingSubnetName'))]",
     "dataDisksLuns": "[range(0, parameters('sqlDataDisksCount'))]",
     "logDisksLuns": "[range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount'))]",
-    "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]",
-    "dataDisks": {
+    "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]"
+    /*"dataDisks": {
       "createOption": "Empty",
       "caching": "ReadOnly",
       "writeAcceleratorEnabled": false,
       "storageAccountType": "Premium_LRS",
       "diskSizeGB": 1023
     }
-    /*"tempDbPath": "D:\\SQLTemp"*/
+    "tempDbPath": "D:\\SQLTemp"*/
   },
   "resources": [
     {
@@ -252,7 +252,7 @@
           "vmSize": "[parameters('virtualMachineSize')]"
         },
         "storageProfile": {
-          "copy": [
+          /*"copy": [
             {
               "name": "dataDisks",
               "count": "[length(range(0, add(parameters('sqlDataDisksCount'), add(parameters('sqlLogDisksCount'), parameters('sqlTempDbDisksCount')))))]",
@@ -267,7 +267,42 @@
                 }
               }
             }
-          ],
+          ],*/
+          "dataDisks": [
+                {
+                    "lun": 0,
+                    "name": "[concat(parameters('virtualMachineName'),'-sql1-Data')]",
+                    "createOption": "Attach",
+                    "caching": "None",
+                    "managedDisk": {
+                        "storageAccountType": "Standard_LRS",
+                        "id": "/subscriptions/15b2c016-c69e-4ef0-9265-2247cdfcf097/resourceGroups/phrdvcc3/providers/Microsoft.Compute/disks/phrdvccsql21-sql1-Data"
+                    },
+                    "diskSizeGB": 63
+                },
+                {
+                    "lun": 1,
+                    "name": "[concat(parameters('virtualMachineName'),'-sql1-Logs')]",
+                    "createOption": "Attach",
+                    "caching": "None",
+                    "managedDisk": {
+                        "storageAccountType": "Standard_LRS",
+                        "id": "/subscriptions/15b2c016-c69e-4ef0-9265-2247cdfcf097/resourceGroups/phrdvcc3/providers/Microsoft.Compute/disks/phrdvccsql21-sql1-Logs"
+                    },
+                    "diskSizeGB": 127
+                },
+                {
+                    "lun": 2,
+                    "name": "[concat(parameters('virtualMachineName'),'-sql1-TempDb')]",
+                    "createOption": "Attach",
+                    "caching": "None",
+                    "managedDisk": {
+                        "storageAccountType": "Standard_LRS",
+                        "id": "/subscriptions/15b2c016-c69e-4ef0-9265-2247cdfcf097/resourceGroups/phrdvcc3/providers/Microsoft.Compute/disks/phrdvccsql21-sql1-TempDb"
+                    },
+                    "diskSizeGB": 31
+                }
+            ],
           "osDisk": {
             "createOption": "FromImage",
             "managedDisk": {
