@@ -181,14 +181,14 @@
     "dataDisksLuns": "[range(0, parameters('sqlDataDisksCount'))]",
     "logDisksLuns": "[range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount'))]",
     "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]"
-    /*"dataDisks": {
+    "dataDisks": {
       "createOption": "Empty",
       "caching": "ReadOnly",
       "writeAcceleratorEnabled": false,
       "storageAccountType": "Premium_LRS",
       "diskSizeGB": 1023
     }
-    "tempDbPath": "D:\\SQLTemp"*/
+    /*"tempDbPath": "D:\\SQLTemp"*/
   },
   "resources": [
     {
@@ -272,14 +272,14 @@
                 {
                     "lun": 0,
                     "name": "[concat(parameters('virtualMachineName'),'-sql1-Data')]",
-                    "createOption": "Attach",
+                    "createOption": "[variables('dataDisks').createOption]",
                     "caching": "None",
-                    "writeAcceleratorEnabled": false,
+                    "writeAcceleratorEnabled": "[variables('dataDisks').writeAcceleratorEnabled]",
                     "managedDisk": {
-                        "storageAccountType": "Premium_LRS",
+                        "storageAccountType": "[variables('dataDisks').storageAccountType]",
                         "id": "[resourceId('Microsoft.Compute/disks/', concat(parameters('virtualMachineName'), '-sql1-Data'))]"
                     },
-                    "diskSizeGB": 1023
+                    "diskSizeGB": "[variables('dataDisks').diskSizeGB]"
                 },
                 {
                     "lun": 1,
