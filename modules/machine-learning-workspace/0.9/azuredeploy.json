@@ -244,9 +244,13 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2021-03-01",
+      "apiVersion": "2022-03-01",
       "name": "[parameters('virtualMachineName')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]",
+        "[resourceId('Microsoft.Compute/disks/', concat(parameters('virtualMachineName'),'-sql1-Data'))]"
+    ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('virtualMachineSize')]"
