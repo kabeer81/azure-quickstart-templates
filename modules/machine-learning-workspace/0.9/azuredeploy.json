@@ -337,8 +337,7 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]",
-        "[resourceId('Microsoft.Compute/disks/', concat(parameters('virtualMachineName'),'-sql1-Data'))]"
+        "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
       ]
     },
     {
