@@ -182,7 +182,7 @@
     "logDisksLuns": "[range(parameters('sqlDataDisksCount'), parameters('sqlLogDisksCount'))]",
     "TempDbDisksLuns": "[range(2, parameters('sqlTempDbDisksCount'))]",
     "dataDisks": {
-      "createOption": "Empty",
+      "createOption": "Attach",
       "caching": "ReadOnly",
       "writeAcceleratorEnabled": false,
       "storageAccountType": "Premium_LRS",
