@@ -276,8 +276,8 @@
                     "caching": "None",
                     "writeAcceleratorEnabled": false,
                     "managedDisk": {
-                        "storageAccountType": "Premium_LRS"
-                        
+                        "storageAccountType": "Premium_LRS",
+                        "id": "none"
                     },
                     "diskSizeGB": 63
                 },
