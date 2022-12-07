@@ -209,33 +209,33 @@
         },
         "resources": [
             {
-                    "type": "Extensions",
-                    "apiVersion": "2019-03-01",
-                    "name": "[concat(parameters('projectName'),'/config-app')]",
-                    "location": "[parameters('location')]",
-                    "dependsOn": [
-                        "[variables('vmName')]"
-                    ],
-                    "tags": {
-                        "displayName": "config-app"
+                "type": "Extensions",
+                "apiVersion": "2019-03-01",
+                "name": "[concat(parameters('projectName'),'/config-app')]",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[variables('vmName')]"
+                ],
+                "tags": {
+                    "displayName": "config-app"
+                },
+                "properties": {
+                    "publisher": "Microsoft.Azure.Extensions",
+                    "type": "CustomScript",
+                    "typeHandlerVersion": "2.1",
+                    "autoUpgradeMinorVersion": true,
+                    "settings": {
+                    "skipDos2Unix":false,
+                    "timestamp":123456789
                     },
-                    "properties": {
-                        "publisher": "Microsoft.Azure.Extensions",
-                        "type": "CustomScript",
-                        "typeHandlerVersion": "2.1",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
-                        "skipDos2Unix":false,
-                        "timestamp":123456789
-                        },
-                        "protectedSettings": {
-                        "commandToExecute": "sh script1.sh",
-                        "storageAccountName": "bash1file",
-                        "storageAccountKey": "HJB74MG2+Q3rA0frEk91Bwd0WqHtoMVVbJaMkXmmp8JBHHEVnIQjA1V4rpSzfa0Lu/pItq1iFBbA+AStt4kODA==",
-                        "fileUris": ["https://bash1file.blob.core.windows.net/bash1file/script1.sh"],
-                        "managedIdentity" : {}
-                        }
+                    "protectedSettings": {
+                    "commandToExecute": "sh script1.sh",
+                    "storageAccountName": "bash1file",
+                    "storageAccountKey": "HJB74MG2+Q3rA0frEk91Bwd0WqHtoMVVbJaMkXmmp8JBHHEVnIQjA1V4rpSzfa0Lu/pItq1iFBbA+AStt4kODA==",
+                    "fileUris": ["https://bash1file.blob.core.windows.net/bash1file/script1.sh"],
+                    "managedIdentity" : {}
                     }
+                }
             }
         ]
       }
