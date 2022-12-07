@@ -214,7 +214,7 @@
                     "name": "[concat(parameters('projectName'),'/config-app')]",
                     "location": "[parameters('location')]",
                     "dependsOn": [
-                        "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
+                        "[variables('vmName')]"
                     ],
                     "tags": {
                         "displayName": "config-app"
