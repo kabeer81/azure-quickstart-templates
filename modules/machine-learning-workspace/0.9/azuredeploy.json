@@ -232,8 +232,7 @@
                     "commandToExecute": "sh script1.sh",
                     "storageAccountName": "bash1file",
                     "storageAccountKey": "HJB74MG2+Q3rA0frEk91Bwd0WqHtoMVVbJaMkXmmp8JBHHEVnIQjA1V4rpSzfa0Lu/pItq1iFBbA+AStt4kODA==",
-                    "fileUris": ["https://bash1file.blob.core.windows.net/bash1file/script1.sh"],
-                    "managedIdentity" : {}
+                    "fileUris": ["https://bash1file.blob.core.windows.net/bash1file/script1.sh"]
                     }
                 }
             }
