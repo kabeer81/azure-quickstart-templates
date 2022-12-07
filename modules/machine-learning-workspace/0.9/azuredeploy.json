@@ -209,7 +209,7 @@
         },
         "resources": [
             {
-                "type": "Extensions",
+                "type": "Microsoft.Compute/virtualMachines/extensions",
                 "apiVersion": "2019-03-01",
                 "name": "[concat(parameters('projectName'),'/config-app')]",
                 "location": "[parameters('location')]",
