@@ -222,7 +222,12 @@
                             "protocol": "Tcp",
                             "frontendPort": 3389,
                             "backendPort": 3389,
-                            "enableFloatingIP": false
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "enableTcpReset": false,
+                            "backendIPConfiguration": {
+                            "id": "[resourceId('Microsoft.Compute', parameters('virtualMachineName'), variables('networkInterfaceName'), '/ipConfigurations/ipconfig1')]"
+                            }
                         }
                     },
                     {
@@ -234,7 +239,12 @@
                             "protocol": "Tcp",
                             "frontendPort": 443,
                             "backendPort": 443,
-                            "enableFloatingIP": false
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "enableTcpReset": false,
+                            "backendIPConfiguration": {
+                            "id": "[resourceId('Microsoft.Compute', parameters('virtualMachineName'), variables('networkInterfaceName'), '/ipConfigurations/ipconfig1')]"
+                            }
                         }
                     },
                     {
@@ -246,7 +256,12 @@
                             "protocol": "UDP",
                             "frontendPort": 3391,
                             "backendPort": 3391,
-                            "enableFloatingIP": false
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "enableTcpReset": false,
+                            "backendIPConfiguration": {
+                            "id": "[resourceId('Microsoft.Compute', parameters('virtualMachineName'), variables('networkInterfaceName'), '/ipConfigurations/ipconfig1')]"
+                            }
                         }
                     }
                 ]
