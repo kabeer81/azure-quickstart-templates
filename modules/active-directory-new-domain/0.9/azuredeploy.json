@@ -633,7 +633,7 @@
         },
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
-            "apiVersion": "2022-05-01",
+            "apiVersion": "2021-05-01",
             "name": "[concat(parameters('prefix'), '-asg-web')]",
             "location": "[parameters('location')]",
             "properties": {
