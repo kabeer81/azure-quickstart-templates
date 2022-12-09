@@ -122,6 +122,8 @@
         "loadBalancerFrontEndIPName": "[concat(parameters('prefix'), '-LBFE')]",
         "backendAddressPoolName": "[concat(parameters('prefix'), '-LBBE')]",
         "inboundNatRulesName": "[concat(parameters('prefix'), '-RDP')]",
+        "TCPnatRule": "[concat(parameters('prefix'), '-TCP')]",
+        "UDPnatRule": "[concat(parameters('prefix'), '-UDP')]",
         "networkInterfaceName": "[concat(parameters('prefix'), '-nic')]",
         "publicIPAddressName": "[concat(parameters('prefix'),'-ip')]",
         "availabilitySetName": "[concat(parameters('prefix'), '-AvailabiltySet')]",
@@ -226,7 +228,7 @@
                         }
                     },
                     {
-                        "name": "TCPnatRule",
+                        "name": "[variables('TCPnatRule')]",
                         "properties": {
                             "frontendIPConfiguration": {
                                 "id": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', variables('loadBalancerName'), variables('loadBalancerFrontEndIPName'))]"
@@ -238,7 +240,7 @@
                         }
                     },
                     {
-                        "name": "UDPnatRule",
+                        "name": "[variables('UDPnatRule')]",
                         "properties": {
                             "frontendIPConfiguration": {
                                 "id": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', variables('loadBalancerName'), variables('loadBalancerFrontEndIPName'))]"
