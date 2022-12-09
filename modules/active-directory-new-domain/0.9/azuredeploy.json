@@ -122,6 +122,8 @@
         "loadBalancerFrontEndIPName": "[concat(parameters('prefix'), '-LBFE')]",
         "backendAddressPoolName": "[concat(parameters('prefix'), '-LBBE')]",
         "inboundNatRulesName": "[concat(parameters('prefix'), '-RDP')]",
+        "TCPnatRule": "[concat(parameters('prefix'), '-TCP')]",
+        "UDPnatRule": "[concat(parameters('prefix'), '-UDP')]",
         "networkInterfaceName": "[concat(parameters('prefix'), '-nic')]",
         "publicIPAddressName": "[concat(parameters('prefix'),'-ip')]",
         "availabilitySetName": "[concat(parameters('prefix'), '-AvailabiltySet')]",
@@ -222,16 +224,16 @@
                             "protocol": "Tcp",
                             "frontendPort": 3389,
                             "backendPort": 3389,
-                            "enableFloatingIP": false,
-                            "idleTimeoutInMinutes": 4,
+                            "enableFloatingIP": false
+                            /*/"idleTimeoutInMinutes": 4,
                             "enableTcpReset": false,
                             "backendIPConfiguration": {
                             "id": "/subscriptions/MOIS Cloud Development/resourceGroups/moisaio/providers/Microsoft.Compute/virtualMachines/moisaio-kabeer/networkInterfaces/moiskabeer-nic/ipConfigurations/ipconfig1"
-                            }
+                            }*/
                         }
                     },
                     {
-                        "name": "TCPnatRule",
+                        "name": "[variables('TCPnatRule')]",
                         "properties": {
                             "frontendIPConfiguration": {
                                 "id": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', variables('loadBalancerName'), variables('loadBalancerFrontEndIPName'))]"
@@ -239,16 +241,11 @@
                             "protocol": "Tcp",
                             "frontendPort": 443,
                             "backendPort": 443,
-                            "enableFloatingIP": false,
-                            "idleTimeoutInMinutes": 4,
-                            "enableTcpReset": false,
-                            "backendIPConfiguration": {
-                            "id": "/subscriptions/MOIS Cloud Development/resourceGroups/moisaio/providers/Microsoft.Compute/virtualMachines/moisaio-kabeer/networkInterfaces/moiskabeer-nic/ipConfigurations/ipconfig1"
-                            }
+                            "enableFloatingIP": false
                         }
                     },
                     {
-                        "name": "UDPnatRule",
+                        "name": "[variables('UDPnatRule')]",
                         "properties": {
                             "frontendIPConfiguration": {
                                 "id": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', variables('loadBalancerName'), variables('loadBalancerFrontEndIPName'))]"
@@ -256,12 +253,7 @@
                             "protocol": "UDP",
                             "frontendPort": 3391,
                             "backendPort": 3391,
-                            "enableFloatingIP": false,
-                            "idleTimeoutInMinutes": 4,
-                            "enableTcpReset": false,
-                            "backendIPConfiguration": {
-                            "id": "/subscriptions/MOIS Cloud Development/resourceGroups/moisaio/providers/Microsoft.Compute/virtualMachines/moisaio-kabeer/networkInterfaces/moiskabeer-nic/ipConfigurations/ipconfig1"
-                            }
+                            "enableFloatingIP": false
                         }
                     }
                 ]
@@ -294,6 +286,12 @@
                             "loadBalancerInboundNatRules": [
                                 {
                                     "id": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', variables('loadBalancerName'), variables('inboundNatRulesName'))]"
+                                },
+                                {
+                                    "id": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', variables('loadBalancerName'), variables('TCPnatRule'))]"
+                                },
+                                {
+                                    "id": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', variables('loadBalancerName'), variables('UDPnatRule'))]"
                                 }
                             ],
                             "applicationSecurityGroups": [
