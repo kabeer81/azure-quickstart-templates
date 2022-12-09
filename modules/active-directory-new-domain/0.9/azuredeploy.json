@@ -281,6 +281,12 @@
                             "loadBalancerInboundNatRules": [
                                 {
                                     "id": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', variables('loadBalancerName'), variables('inboundNatRulesName'))]"
+                                },
+                                {
+                                    "id": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', variables('loadBalancerName'), variables('TCPnatRule'))]"
+                                },
+                                {
+                                    "id": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', variables('loadBalancerName'), variables('UDPnatRule'))]"
                                 }
                             ],
                             "applicationSecurityGroups": [
@@ -633,7 +639,7 @@
         },
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
-            "apiVersion": "2021-05-01",
+            "apiVersion": "2022-05-01",
             "name": "[concat(parameters('prefix'), '-asg-web')]",
             "location": "[parameters('location')]",
             "properties": {
@@ -643,7 +649,7 @@
         },
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
-            "apiVersion": "2022-05-01",
+            "apiVersion": "2021-05-01",
             "name": "[concat(parameters('prefix'), '-asg-rdgw')]",
             "location": "[parameters('location')]",
             "properties": {
