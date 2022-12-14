@@ -639,7 +639,7 @@
         },
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
-            "apiVersion": "2021-05-01",
+            "apiVersion": "2020-05-01",
             "name": "[concat(parameters('prefix'), '-asg-web')]",
             "location": "[parameters('location')]",
             "properties": {
@@ -649,7 +649,7 @@
         },
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
-            "apiVersion": "2021-05-01",
+            "apiVersion": "2020-05-01",
             "name": "[concat(parameters('prefix'), '-asg-rdgw')]",
             "location": "[parameters('location')]",
             "properties": {
@@ -659,7 +659,7 @@
         },
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
-            "apiVersion": "2021-05-01",
+            "apiVersion": "2020-05-01",
             "name": "[concat(parameters('prefix'), '-asg-rdsh')]",
             "location": "[parameters('location')]",
             "properties": {
