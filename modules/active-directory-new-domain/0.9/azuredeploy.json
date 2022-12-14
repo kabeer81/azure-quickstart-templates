@@ -494,7 +494,7 @@
         }, 
         {
             "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2022-03-01",
+            "apiVersion": "2022-01-01",
             "name": "[variables('nsgname')]",
             "location": "[parameters('location')]",
             "properties": {
