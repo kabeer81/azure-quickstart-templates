@@ -498,6 +498,9 @@
             "apiVersion": "2022-01-01",
             "name": "[variables('nsgname')]",
             "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/applicationSecuritygroup/', concat(parameters('prefix'), '-asg-rdsh'))]"
+            ],
             "properties": {
                 "provisioningState": "Succeeded",
                 "flushConnection": false,
