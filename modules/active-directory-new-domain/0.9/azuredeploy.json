@@ -291,7 +291,8 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "VNet",
-                "[variables('loadBalancerName')]"
+                "[variables('loadBalancerName')]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups/', variables('nsgname'))]"
             ],
             "properties": {
                 "ipConfigurations": [
