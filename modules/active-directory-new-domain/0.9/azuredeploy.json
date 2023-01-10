@@ -260,8 +260,7 @@
             "name": "[concat(parameters('prefix'), '-asg-web')]",
             "location": "[parameters('location')]",
             "properties": {
-                "provisioningState": "Succeeded",
-                "resourceGuid": "00000000-0000-0000-0000-000000000000"
+                "provisioningState": "Succeeded"
             }
         },
         {
@@ -270,8 +269,7 @@
             "name": "[concat(parameters('prefix'), '-asg-rdgw')]",
             "location": "[parameters('location')]",
             "properties": {
-                "provisioningState": "Succeeded",
-                "resourceGuid": "00000000-0000-0000-0000-000000000000"
+                "provisioningState": "Succeeded"
             }
         },
         {
