@@ -278,8 +278,7 @@
             "name": "[concat(parameters('prefix'), '-asg-rdsh')]",
             "location": "[parameters('location')]",
             "properties": {
-                "provisioningState": "Succeeded",
-                "resourceGuid": "00000000-0000-0000-0000-000000000000"
+                "provisioningState": "Succeeded"
             }
         },
         {
