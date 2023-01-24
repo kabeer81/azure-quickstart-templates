@@ -288,8 +288,7 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "VNet",
-                "[variables('loadBalancerName')]",
-                "[resourceId('Microsoft.Network/networkSecurityGroups/', variables('nsgname'))]"
+                "[variables('loadBalancerName')]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -341,6 +340,11 @@
             "apiVersion": "2022-01-01",
             "name": "[variables('nsgname')]",
             "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat(parameters('prefix'), '-asg-web')]",
+                "[concat(parameters('prefix'), '-asg-rdgw')]",
+                "[concat(parameters('prefix'), '-asg-rdsh')]"
+            ],
             "properties": {
                 "provisioningState": "Succeeded",
                 "flushConnection": false,
